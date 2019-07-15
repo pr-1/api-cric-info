@@ -17,13 +17,15 @@ export class UsersService extends BaseService<UserModel> {
   }
 
   async register(vm) {
-    const { email, password, firstName, lastName } = vm;
+    const { email, password, firstname, lastname } = vm;
     Logger.log('Register req is ' + vm.toString() , 'USER SERVICE');
-
+    Logger.log(firstname);
+    Logger.log(lastname);
     const newUser = new this.userModel();
     newUser.email = email.trim().toLowerCase();
     newUser.password = password;
-    // newUser.name = lastName;
+    newUser.firstname = firstname;
+    newUser.lastname = lastname;
 
     const salt = await genSalt(10);
     newUser.password = await hash(password, salt);

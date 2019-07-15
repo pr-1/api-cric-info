@@ -1,5 +1,4 @@
 import { prop, Typegoose } from 'typegoose';
-import { Post } from './post.model';
 
 export class UserModel extends Typegoose {
   @prop({ required: true, unique: true, index: true })
@@ -7,23 +6,11 @@ export class UserModel extends Typegoose {
   @prop({ required: true })
   password: string;
   @prop()
-  name: string;
+  firstname: string;
   @prop()
-  age: number;
+  lastname: string;
   @prop()
-  gender: Gender;
-  @prop()
-  created: Date;
-  @prop()
-  token?: string;
-  @prop()
-  posts?: Post[];
-  @prop()
-  bookmarks?: Post[];
-}
-
-export enum Gender {
-  MALE = 'Male',
-  FEMALE = 'Female',
-  TRANGENDER = 'Transgender',
+  get name() {
+    return this.firstname + ' ' + this.lastname;
+  }
 }

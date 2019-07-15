@@ -1,4 +1,4 @@
-import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, HttpException, HttpStatus, Logger, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UserModel } from '../../models/user.model';
 
@@ -7,8 +7,8 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @Post('register')
-  async register(@Body() vm: any): Promise<any> {
-    const { email, password } = vm;
+  async register(@Body() vm: UserModel): Promise<any> {
+    const { email, password, firstname, lastname } = vm;
 
     if (!email) {
       throw new HttpException('Username is required', HttpStatus.BAD_REQUEST);
