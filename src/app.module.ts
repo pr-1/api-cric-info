@@ -5,7 +5,7 @@ import { TypegooseModule } from 'nestjs-typegoose';
 import { PostModule } from './modules/post/post.module';
 import 'dotenv/config';
 import { SharedModule } from './shared/shared.module';
-const dbUrl = 'mongodb+srv://blog-app-admin:qwerty1234@cluster0-cb4pe.mongodb.net/test?retryWrites=true&w=majority';
+const dbUrl = 'mongodb://prince:prince123@ds131747.mlab.com:31747/db-blog-app';
 
 @Module({
   imports: [
