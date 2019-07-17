@@ -12,6 +12,6 @@ export class Post extends Typegoose {
   created: Date;
   @prop({default: Date.now()})
   updated: Date;
-  @prop({required: true, index: true})
+  @prop({required: true})
   author: UserModel;
 }

@@ -9,7 +9,7 @@ const dbUrl = 'mongodb://prince:prince123@ds131747.mlab.com:31747/db-blog-app';
 
 @Module({
   imports: [
-    TypegooseModule.forRoot(dbUrl, {useNewUrlParser: true, useCreateIndex: true}),
+    TypegooseModule.forRoot(dbUrl, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false}),
     PostModule,
     SharedModule,
   ],
