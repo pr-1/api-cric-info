@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Delete, Logger, Param, Req } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Delete, Logger, Param, Req, HttpException, HttpStatus } from '@nestjs/common';
 import { PostsService } from './post.service';
 import { Post as BlogPost } from 'src/models/post.model';
 import { Observable } from 'rxjs';
@@ -16,6 +16,15 @@ export class PostsController {
 
   @Post()
   create(@Body() post: BlogPost): Observable<BlogPost> {
+    if (!post.author) {
+      throw new HttpException('User is required', HttpStatus.BAD_REQUEST);
+    }
+    if (!post.title) {
+      throw new HttpException('Title is required', HttpStatus.BAD_REQUEST);
+    }
+    if (!post.description) {
+      throw new HttpException('Description is required', HttpStatus.BAD_REQUEST);
+    }
     const create$ = this.postsService.create(post);
     create$.subscribe((res) => {
       Logger.log('created doc' + res, 'PostController');

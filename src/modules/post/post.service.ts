@@ -12,6 +12,7 @@ export class PostsService {
 
   create(createPostDto: Post): Observable<Post> {
     const createdPost = new this.postModel(createPostDto);
+    // TODO Handle errors
     return from(createdPost.save() as ObservableInput<Post>);
   }
 
@@ -19,9 +20,6 @@ export class PostsService {
     return from(this.postModel.find().exec());
   }
 
-  // updatePost(id: string) {
-  //   return this.postModel()
-  // }
   updatePost(id: string, item: Partial<Post>): Observable<Post> {
     return from(this.postModel
       .findByIdAndUpdate(this.toObjectId(id), item, { new: true })

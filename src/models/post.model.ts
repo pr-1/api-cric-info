@@ -12,8 +12,6 @@ export class Post extends Typegoose {
   created: Date;
   @prop({default: Date.now()})
   updated: Date;
-  @prop({index: true})
+  @prop({required: true, index: true})
   author: UserModel;
-  @prop({default: 0})
-  votes: number;
 }

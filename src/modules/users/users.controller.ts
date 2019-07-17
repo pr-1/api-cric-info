@@ -34,7 +34,7 @@ export class UsersController {
   }
 
   @Post('login')
-  async login(@Body() vm: any) {
+  login(@Body() vm: any) {
     const fields = Object.keys(vm);
     fields.forEach(field => {
       if (!vm[field]) {
