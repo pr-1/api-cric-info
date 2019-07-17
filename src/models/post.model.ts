@@ -1,4 +1,4 @@
-import { prop, Typegoose } from 'typegoose';
+import { prop, Typegoose, Ref } from 'typegoose';
 import { IsString } from 'class-validator';
 import { UserModel } from './user.model';
 
@@ -13,5 +13,5 @@ export class Post extends Typegoose {
   @prop({default: Date.now()})
   updated: Date;
   @prop({required: true})
-  author: UserModel;
+  authorId: UserModel;
 }
