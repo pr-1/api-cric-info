@@ -16,7 +16,7 @@ export class PostsController {
 
   @Post()
   create(@Body() post: BlogPost): Observable<BlogPost> {
-    if (!post.authorId) {
+    if (!post.author) {
       throw new HttpException('User is required', HttpStatus.BAD_REQUEST);
     }
     if (!post.title) {
