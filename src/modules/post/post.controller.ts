@@ -16,14 +16,14 @@ export class PostsController {
 
   @Post()
   create(@Body() post: BlogPost): Observable<BlogPost> {
-    // if (!post.author) {
-    //   throw new HttpException('User is required', HttpStatus.BAD_REQUEST);
-    // }
     if (!post.title) {
       throw new HttpException('Post Title is required', HttpStatus.BAD_REQUEST);
     }
-    if (!post.description) {
+    if (!post.english) {
       throw new HttpException('Post Description is required', HttpStatus.BAD_REQUEST);
+    }
+    if (!post.postType) {
+      throw new HttpException('Post Type is required', HttpStatus.BAD_REQUEST);
     }
     const create$ = this.postsService.create(post);
     create$.subscribe((res) => {
