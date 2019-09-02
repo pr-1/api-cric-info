@@ -17,7 +17,7 @@ export class PostsService {
   }
 
   findAll(): Observable<Post[] | null> {
-    return from(this.postModel.find().exec());
+    return from(this.postModel.find().populate('author').exec());
   }
 
   updatePost(id: string, item: Partial<Post>): Observable<Post> {

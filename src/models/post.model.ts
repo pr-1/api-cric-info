@@ -13,12 +13,12 @@ export class Post extends Typegoose {
   title: string;
   @prop({ required: true })
   description: string;
+  @prop({ default: '' })
+  hindi: string;
   @prop({default: Date.now()})
   created: Date;
   @prop({default: Date.now()})
   updated: Date;
-  @prop({required: true, _id: false, unique: false, ref: UserModel})
-  author: UserModel;
-  @prop({enum: PostTypeEnum})
+  @prop()
   postType: PostTypeEnum;
 }
