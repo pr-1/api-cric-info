@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Put, Delete, Logger, Param, Req, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Delete, Logger, Param, Req, HttpException, HttpStatus, UseGuards } from '@nestjs/common';
 import { PostsService } from './post.service';
 import { Post as BlogPost } from 'src/models/post.model';
 import { Observable } from 'rxjs';
 import { Request } from 'express';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('posts')
 export class PostsController {
@@ -14,6 +15,7 @@ export class PostsController {
     return this.postsService.findAll();
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Post()
   create(@Body() post: BlogPost): Observable<BlogPost> {
     if (!post.title) {
