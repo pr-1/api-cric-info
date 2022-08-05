@@ -34,7 +34,7 @@
     "hbs": "^4.0.4",
     "is-class": "0.0.7",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.13",
+    "mongoose": "^5.7.5",
     "nestjs-typegoose": "^5.2.1",
     "nodemon": "^1.18.9",
     "passport": "^0.4.0",
